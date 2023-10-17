@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calcular desconto</title>
+
+    <script type="text/javascript">
+      function calcValor() {
+        document.getElementById("total").value = "0";
+        var mostrar = document.getElementById("resultado");
+
+        var vlrLiquido = parseFloat(document.getElementById("vlr").value);
+
+        var desc = parseFloat(document.getElementById("desc").value);
+        if (isNaN(desc)) {
+          desc = 0;
+        }
+        var desconto = parseFloat((vlrLiquido * desc) / 100);
+
+        var total = parseFloat(vlrLiquido) - parseFloat(desconto);
+        var vlrFinal = "R$ " + total.toFixed(2);
+
+        mostrar.innerHTML = vlrFinal;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h2>N&C</h2>
+    </header>
+    <main>
+      <h1>Calcular valor do desconto:</h1>
+      <div>
+        <label for="" class="dir">Valor</label>
+        <input type="text" name="vlr" id="vlr" placeholder="Digite o valor aqui" />
+      </div>
+      <div>
+        <label for="" class="dir">Desconto % (somente o número):</label>
+        <input type="text" name="desc" id="desc" placeholder="20"/>
+      </div>
+      <div class="btn">
+        <button type="button" id="total" name="total" onclick="calcValor()">
+          Calcular
+        </button>
+      </div>
+      <div id="resultado"></div>
+    </main>
+  </body>
+</html>
